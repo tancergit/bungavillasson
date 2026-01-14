@@ -1,0 +1,971 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Bungavillas | Doğanın Kalbinde</title>
+  <meta name="description" content="Bungavillas — Villalar, galeri, WhatsApp ile hızlı iletişim." />
+
+  <style>
+    :root{
+      --ink:#0b1220;
+      --muted:rgba(2,6,23,.62);
+      --line:rgba(15,23,42,.10);
+      --card:rgba(255,255,255,.92);
+      --shadow:0 18px 55px rgba(2,6,23,.12);
+      --shadow2:0 22px 70px rgba(0,0,0,.40);
+      --r:18px;
+      --r2:24px;
+      --max:1200px;
+
+      --brand:#16a34a; /* ✅ green button */
+      --brand2:#22c55e;
+      --blue:#2563eb;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
+      color:var(--ink);
+      background:
+        radial-gradient(900px 600px at 10% 10%, rgba(37,99,235,.10), transparent 60%),
+        radial-gradient(900px 600px at 90% 15%, rgba(34,197,94,.10), transparent 60%),
+        linear-gradient(180deg, #f8fafc 0%, #f1f5f9 40%, #eef2ff 100%);
+      overflow-x:hidden;
+    }
+    a{color:inherit;text-decoration:none}
+    .container{max-width:var(--max); margin:0 auto; padding:0 18px;}
+
+    /* HEADER — ✅ only big logo */
+    .topbar{
+      position:sticky; top:0; z-index:60;
+      background: rgba(255,255,255,.92);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(15,23,42,.10);
+    }
+    .nav{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:12px; padding:14px 0;
+    }
+    .brand{display:flex; align-items:center; gap:12px; min-width: 220px;}
+    .mark{
+      width:64px; height:64px; border-radius:18px;
+      border:1px solid rgba(15,23,42,.12);
+      background:#fff;
+      box-shadow: 0 12px 26px rgba(2,6,23,.10);
+      overflow:hidden;
+      display:grid; place-items:center;
+      flex:0 0 auto;
+    }
+    .mark img{width:100%; height:100%; object-fit:cover; display:block}
+    .brand-title{display:flex; flex-direction:column; line-height:1.05}
+    .brand-title b{font-size:18px; letter-spacing:.6px}
+    .brand-title small{color:rgba(2,6,23,.55); font-weight:700; margin-top:4px}
+
+    .right-meta{
+      display:flex; align-items:center; gap:10px;
+      color:rgba(2,6,23,.55);
+      font-weight:800;
+      font-size:13px;
+      white-space:nowrap;
+    }
+
+    .btn{
+      display:inline-flex; align-items:center; justify-content:center;
+      gap:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.75);
+      box-shadow: 0 10px 28px rgba(2,6,23,.08);
+      transition: transform .16s ease, box-shadow .16s ease;
+      font-weight:900;
+      cursor:pointer;
+      user-select:none;
+      white-space:nowrap;
+    }
+    .btn:hover{transform: translateY(-1px); box-shadow: 0 14px 34px rgba(2,6,23,.12)}
+    .btn.green{
+      border-color: rgba(22,163,74,.22);
+      color:#fff;
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      box-shadow: 0 16px 44px rgba(22,163,74,.22);
+    }
+    .btn.green:hover{box-shadow: 0 20px 54px rgba(22,163,74,.26)}
+
+    /* HERO */
+    .hero{
+      height: min(74vh, 640px);
+      min-height: 480px;
+      border-radius: var(--r2);
+      border:1px solid rgba(15,23,42,.10);
+      overflow:hidden;
+      box-shadow: var(--shadow);
+      position:relative;
+      margin: 18px 0 14px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.45), rgba(0,0,0,.35)),
+        var(--hero-url, linear-gradient(135deg, rgba(37,99,235,.22), rgba(34,197,94,.18)));
+      background-size: cover;
+      background-position: center;
+    }
+    .hero h1{
+      position:absolute;
+      left:50%; top:50%;
+      transform:translate(-50%,-50%);
+      margin:0;
+      text-align:center;
+      color:#fff;
+      font-size: 46px;
+      font-weight:900;
+      letter-spacing:.2px;
+      text-shadow:0 18px 50px rgba(0,0,0,.55);
+      line-height:1.1;
+      padding:0 12px;
+    }
+    .hero p{
+      position:absolute;
+      left:50%; top:calc(50% + 72px);
+      transform:translateX(-50%);
+      margin:0;
+      text-align:center;
+      color:rgba(255,255,255,.92);
+      font-size: 16px;
+      font-weight:750;
+      text-shadow:0 14px 44px rgba(0,0,0,.5);
+      padding:0 12px;
+    }
+
+    section{padding:16px 0}
+    .section-title{
+      display:flex; align-items:flex-end; justify-content:space-between; gap:12px;
+      margin: 8px 0 12px;
+    }
+    .section-title h3{margin:0; font-size:20px}
+    .section-title span{color:rgba(2,6,23,.62); font-size:13px}
+
+    .card{
+      border-radius: var(--r2);
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.92);
+      box-shadow: var(--shadow);
+      overflow:hidden;
+    }
+    .card-inner{padding:18px}
+
+    /* VILLAS — ✅ 6 on main, other 6 horizontal */
+    .villas-scroll{
+      display:flex;
+      gap:14px;
+      overflow-x:auto;
+      scroll-snap-type:x mandatory;
+      -webkit-overflow-scrolling: touch;
+      padding-bottom: 12px;
+    }
+    .villas-scroll::-webkit-scrollbar{height:10px}
+    .villas-scroll::-webkit-scrollbar-thumb{background:rgba(2,6,23,.16); border-radius:999px}
+    .villas-scroll::-webkit-scrollbar-track{background:rgba(2,6,23,.06); border-radius:999px}
+
+    .villas-page{
+      flex: 0 0 100%;
+      scroll-snap-align: start;
+    }
+    .villas-grid{
+      display:grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap:14px;
+    }
+
+    .villa{
+      border-radius: var(--r2);
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.95);
+      box-shadow: 0 16px 40px rgba(2,6,23,.10);
+      overflow:hidden;
+      cursor:pointer;
+      transition: transform .16s ease, box-shadow .16s ease, border-color .16s ease;
+      position:relative;
+    }
+    .villa:hover{
+      transform: translateY(-3px);
+      box-shadow: 0 22px 60px rgba(2,6,23,.14);
+      border-color: rgba(37,99,235,.22);
+    }
+    .villa-img{
+      height: 190px;
+      background:
+        linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.10)),
+        var(--img, linear-gradient(135deg, rgba(37,99,235,.22), rgba(34,197,94,.18)));
+      background-size: cover;
+      background-position: center;
+    }
+    .villa-body{padding:14px}
+    .villa-head{
+      display:flex; align-items:center; justify-content:space-between; gap:10px;
+      margin-bottom:10px;
+    }
+    .villa-head b{font-size:15px}
+    .chip{
+      font-size:12px; color:rgba(2,6,23,.62);
+      padding:6px 10px; border-radius:999px;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.80);
+      white-space:nowrap;
+    }
+
+    /* ✅ 2x3 boxes under villas (features) */
+    .features{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap:8px;
+      margin-top:10px;
+    }
+    .f{
+      display:flex; align-items:center; gap:8px;
+      padding:9px 10px;
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(2,6,23,.03);
+      font-size:12.5px;
+      color: rgba(2,6,23,.74);
+      user-select:none;
+    }
+    .tick{
+      width:18px; height:18px;
+      border-radius:6px;
+      border:1px solid rgba(15,23,42,.14);
+      background: linear-gradient(135deg, rgba(37,99,235,.20), rgba(34,197,94,.18));
+      display:grid; place-items:center;
+      flex:0 0 auto;
+    }
+    .tick svg{width:12px; height:12px; opacity:.95}
+
+    /* ✅ price boxes */
+    .prices{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:8px;
+      margin-top:10px;
+    }
+    .price{
+      padding:10px 10px;
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.88);
+      display:flex; align-items:flex-start; justify-content:space-between; gap:10px;
+    }
+    .price small{
+      display:block;
+      color: rgba(2,6,23,.60);
+      font-weight:800;
+      font-size:11px;
+      margin-bottom:4px;
+    }
+    .price b{
+      font-size:13px;
+      font-weight:950;
+      color: rgba(2,6,23,.86);
+    }
+
+    /* FORM */
+    label{display:block; font-size:12px; color:rgba(2,6,23,.62); margin:10px 0 6px}
+    input, select{
+      width:100%;
+      padding:12px 12px;
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.96);
+      color: #0b1220;
+      outline:none;
+      transition: .15s ease;
+    }
+    input:focus, select:focus{
+      border-color: rgba(37,99,235,.55);
+      box-shadow: 0 0 0 4px rgba(37,99,235,.14)
+    }
+    .grid2{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+    .grid3{display:grid; grid-template-columns:1fr 1fr 1fr; gap:10px}
+
+    .call-card{
+      max-width: 980px;
+      margin: 0 auto;
+    }
+
+    /* Reviews */
+    .reviews{
+      display:grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap:12px;
+      margin-top:12px;
+    }
+    .review{
+      border-radius: var(--r2);
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.92);
+      padding:16px;
+      box-shadow: 0 16px 40px rgba(2,6,23,.08);
+    }
+    .review .top{display:flex; align-items:center; justify-content:space-between; gap:10px; margin-bottom:10px;}
+    .review b{font-size:14px}
+    .review .date{font-size:12px; color:rgba(2,6,23,.55); font-weight:850}
+    .stars{letter-spacing:1px; color:#f59e0b}
+    .review p{margin:0; color:rgba(2,6,23,.66); line-height:1.65; font-size:13.5px}
+
+    /* ✅ Dernek logos right and bigger */
+    .bottom-row{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      flex-wrap:wrap;
+    }
+    .assoc-logos{
+      display:flex;
+      align-items:center;
+      gap:18px;
+      margin-left:auto; /* push right */
+    }
+    .assoc-logos img{
+      height:72px; /* bigger */
+      opacity:.92;
+      filter: saturate(1.02);
+      border-radius: 12px;
+      border:1px solid rgba(15,23,42,.08);
+      background:#fff;
+      padding:6px;
+    }
+
+    footer{
+      padding:24px 0 34px;
+      border-top: 1px solid rgba(15,23,42,.10);
+      color: rgba(2,6,23,.62);
+      font-size:13px;
+    }
+
+    /* Modal gallery */
+    .modal{
+      position:fixed; inset:0;
+      display:none;
+      align-items:center; justify-content:center;
+      background: rgba(2,6,23,.55);
+      backdrop-filter: blur(10px);
+      z-index:120;
+      padding:16px;
+      opacity:0;
+      transition: opacity .22s ease;
+    }
+    .modal.open{display:flex; opacity:1}
+    .modal-panel{
+      width:min(1100px, 100%);
+      border-radius: 22px;
+      border:1px solid rgba(255,255,255,.18);
+      background: rgba(255,255,255,.92);
+      box-shadow: var(--shadow2);
+      overflow:hidden;
+      transform: translateY(10px) scale(.98);
+      transition: transform .22s ease;
+    }
+    .modal.open .modal-panel{transform: translateY(0) scale(1)}
+    .modal-head{
+      display:flex; align-items:center; justify-content:space-between;
+      gap:10px;
+      padding:14px 14px;
+      border-bottom:1px solid rgba(15,23,42,.10);
+      background: rgba(255,255,255,.90);
+    }
+    .modal-head b{font-size:14px}
+    .iconbtn{
+      width:40px; height:40px;
+      border-radius:14px;
+      border:1px solid rgba(15,23,42,.12);
+      background: rgba(255,255,255,.90);
+      color:#0b1220;
+      cursor:pointer;
+      display:inline-flex; align-items:center; justify-content:center;
+      transition:.15s ease;
+    }
+    .iconbtn:hover{background: rgba(2,6,23,.04); transform: translateY(-1px)}
+    .modal-body{padding:14px}
+    .gallery{
+      display:grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap:10px;
+    }
+    .ph{
+      border-radius: 16px;
+      border:1px solid rgba(15,23,42,.10);
+      background: rgba(2,6,23,.03);
+      overflow:hidden;
+      aspect-ratio: 4/3;
+      position:relative;
+    }
+    .ph img{
+      width:100%; height:100%;
+      object-fit: cover;
+      display:block;
+      transform: scale(1.01);
+      transition: transform .25s ease;
+    }
+    .ph:hover img{transform: scale(1.06)}
+    .hint{margin-top:10px; color: rgba(2,6,23,.60); font-size:12px;}
+
+    /* WhatsApp floating */
+    .wa-float{
+      position:fixed;
+      right:16px;
+      bottom:16px;
+      z-index:200;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:6px;
+      user-select:none;
+    }
+    .wa-bubble{
+      width:58px; height:58px;
+      border-radius:18px;
+      border:1px solid rgba(15,23,42,.10);
+      background: linear-gradient(135deg, var(--brand), var(--brand2));
+      color:#fff;
+      box-shadow: 0 18px 50px rgba(22,163,74,.26);
+      display:grid;
+      place-items:center;
+      font-size:24px;
+      transition: transform .16s ease, box-shadow .16s ease;
+    }
+    .wa-bubble:hover{
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 22px 60px rgba(22,163,74,.32);
+    }
+    .wa-caption{
+      font-size:12px;
+      color: rgba(2,6,23,.70);
+      background: rgba(255,255,255,.85);
+      border:1px solid rgba(15,23,42,.10);
+      padding:6px 10px;
+      border-radius:999px;
+      box-shadow: 0 10px 28px rgba(2,6,23,.10);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Responsive */
+    @media (max-width: 980px){
+      .hero h1{font-size:34px}
+      .grid3{grid-template-columns:1fr}
+      .villas-grid{grid-template-columns:1fr}
+      .gallery{grid-template-columns: repeat(2, 1fr)}
+      .reviews{grid-template-columns:1fr}
+      .assoc-logos img{height:64px}
+    }
+  </style>
+</head>
+
+<body>
+  <div class="topbar">
+    <div class="container">
+      <div class="nav">
+        <a class="brand" href="#top" aria-label="Bungavillas">
+          <div class="mark" aria-hidden="true">
+            <img id="logoImg" alt="Bungavillas logo">
+          </div>
+          <div class="brand-title">
+            <b>BUNGAVILLAS</b>
+            <small>Doğanın Kalbinde</small>
+          </div>
+        </a>
+
+        <div class="right-meta" aria-hidden="true">
+          Doğanın Kalbinde
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Floating Live Support -->
+  <a class="wa-float" id="waFloat" target="_blank" rel="noopener" aria-label="Canlı Destek">
+    <div class="wa-bubble">💬</div>
+    <div class="wa-caption">Canlı Destek</div>
+  </a>
+
+  <main id="top">
+    <div class="container">
+      <div class="hero" id="hero">
+        <h1>Doğanın Kalbinde<br/>Huzurlu Tatil</h1>
+        <p>Özel villalar • Hızlı iletişim • WhatsApp ile kolay rezervasyon</p>
+      </div>
+
+      <!-- VILLAS -->
+      <section id="villas">
+        <div class="section-title">
+          <h3>Villalarımız</h3>
+          <span>6 villa burada • diğer 6’sı yana kaydır</span>
+        </div>
+
+        <div class="villas-scroll" id="villasScroll" aria-label="Villa listesi"></div>
+      </section>
+
+      <!-- CALL FORM -->
+      <section id="call">
+        <div class="card call-card">
+          <div class="card-inner">
+            <h3 style="margin:0 0 12px; font-size:20px">Sizi Arayalım</h3>
+
+            <form id="resForm">
+              <div class="grid3">
+                <div>
+                  <label for="checkin">Giriş Tarihi</label>
+                  <input id="checkin" type="date" required />
+                </div>
+                <div>
+                  <label for="checkout">Çıkış Tarihi</label>
+                  <input id="checkout" type="date" required />
+                </div>
+                <div>
+                  <label for="villaSel">Villa</label>
+                  <select id="villaSel" required></select>
+                </div>
+              </div>
+
+              <div style="margin-top:10px">
+                <label for="phone">Telefon Numaranız</label>
+                <input id="phone" type="tel" placeholder="05xx xxx xx xx" required />
+              </div>
+
+              <button class="btn green" type="submit" style="width:100%; margin-top:12px;">
+                Sizi Arayalım
+              </button>
+
+              <div style="margin-top:10px; color:rgba(2,6,23,.55); font-size:12px; font-weight:750;">
+                Form WhatsApp’a mesaj hazırlar. Numara: <span id="waNumText"></span>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- REVIEWS (✅ name + date) -->
+        <div class="reviews" aria-label="Yorumlar">
+          <div class="review">
+            <div class="top">
+              <div>
+                <b>Ayşe K.</b> <span class="date">• 12.01.2026</span>
+              </div>
+              <span class="stars">★★★★★</span>
+            </div>
+            <p>Çok temiz ve düzenliydi. İletişim hızlı, ortam sakin. Tekrar gelmek isteriz.</p>
+          </div>
+
+          <div class="review">
+            <div class="top">
+              <div>
+                <b>Mehmet T.</b> <span class="date">• 05.01.2026</span>
+              </div>
+              <span class="stars">★★★★★</span>
+            </div>
+            <p>Konforlu ve huzurluydu. Süreç çok kolaydı.</p>
+          </div>
+
+          <div class="review">
+            <div class="top">
+              <div>
+                <b>Elif S.</b> <span class="date">• 29.12.2025</span>
+              </div>
+              <span class="stars">★★★★★</span>
+            </div>
+            <p>Fotoğraflardaki gibi. Sessiz, temiz, düzenli. Tavsiye ederim.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section id="about">
+        <div class="section-title">
+          <h3>Hakkımızda</h3>
+          <span></span>
+        </div>
+
+        <div class="card">
+          <div class="card-inner">
+            <p style="margin:0 0 12px; color:rgba(2,6,23,.70); line-height:1.85">
+              Bungavillas, turizm sektöründeki deneyimini modern hizmet anlayışıyla birleştirerek misafirlerine güvenilir ve konforlu bir konaklama sunmayı hedefler.
+            </p>
+            <p style="margin:0; color:rgba(2,6,23,.70); line-height:1.85">
+              <b>Vizyon:</b> Doğa ile uyumlu, kaliteli ve sürdürülebilir konaklama anlayışını güçlendirmek.<br/>
+              <b>Misyon:</b> Hızlı iletişim, hijyen ve memnuniyet odaklı hizmet sunmak.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <footer>
+        <div class="bottom-row">
+          <div>© <span id="y"></span> Bungavillas • Tüm hakları saklıdır.</div>
+
+          <!-- ✅ bigger and right -->
+          <div class="assoc-logos" aria-label="Dernek Logoları">
+            <img id="dernek1" alt="Dernek 1">
+            <img id="dernek2" alt="Dernek 2">
+          </div>
+        </div>
+      </footer>
+    </div>
+  </main>
+
+  <!-- MODAL -->
+  <div class="modal" id="modal" aria-hidden="true">
+    <div class="modal-panel" role="dialog" aria-modal="true" aria-label="Galeri">
+      <div class="modal-head">
+        <b id="modalTitle">Galeri</b>
+        <div style="display:flex; gap:8px;">
+          <button class="iconbtn" type="button" id="prevBtn" title="Önceki">‹</button>
+          <button class="iconbtn" type="button" id="nextBtn" title="Sonraki">›</button>
+          <button class="iconbtn" type="button" id="closeBtn" title="Kapat">✕</button>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="gallery" id="gallery"></div>
+        <div class="hint">ESC ile kapat • Ok tuşlarıyla villa değiştir</div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ================================
+      ✅ IMPORTANT: FILE NAME FIXER
+      GitHub bazen "1.jpeg" dosyasını "1.jpeg.jpeg" yapıyor.
+      Aşağıdaki fonksiyon, aynı görsel için farklı isimleri dener.
+    ================================= */
+    function trySetImg(imgEl, candidates, onDone){
+      let i = 0;
+      const test = new Image();
+      const next = () => {
+        if(i >= candidates.length){
+          if(onDone) onDone(null);
+          return;
+        }
+        const src = candidates[i++];
+        test.onload = () => {
+          imgEl.src = src;
+          if(onDone) onDone(src);
+        };
+        test.onerror = next;
+        test.src = src;
+      };
+      next();
+    }
+
+    function tryGetUrl(candidates){
+      return new Promise((resolve) => {
+        const t = new Image();
+        let i = 0;
+        const next = () => {
+          if(i >= candidates.length){ resolve(null); return; }
+          const src = candidates[i++];
+          t.onload = () => resolve(src);
+          t.onerror = next;
+          t.src = src;
+        };
+        next();
+      });
+    }
+
+    /* ====== Settings ====== */
+    const WHATSAPP_NUMBER = "905336518563";
+    document.getElementById("waNumText").textContent = "0" + WHATSAPP_NUMBER.slice(2); // 0533...
+    document.getElementById("waFloat").href = `https://wa.me/${WHATSAPP_NUMBER}`;
+
+    // ✅ Hero file candidates (kök dizin)
+    const HERO_CANDIDATES = [
+      "hero.jpeg", "hero.jpg", "hero.png",
+      "banner.jpeg", "banner.jpg", "banner.png",
+      "banner.jpeg.jpeg", "hero.jpeg.jpeg"
+    ];
+
+    // ✅ Logo file candidates
+    const LOGO_CANDIDATES = [
+      "logo.jpeg", "logo.jpg", "logo.png",
+      "logo.jpeg.jpeg", "logo.jpg.jpg", "logo.png.png",
+      "logo.jpeg.png", "logo.jpeg.png.png"
+    ];
+
+    // ✅ Dernek logo candidates
+    const DERNEK1_CAND = [
+      "dernek1.png", "dernek1.jpg", "dernek1.jpeg",
+      "dernek1.png.png", "dernek1.png.png.png", "dernek1.jpeg.jpeg"
+    ];
+    const DERNEK2_CAND = [
+      "dernek2.png", "dernek2.jpg", "dernek2.jpeg",
+      "dernek2.png.png", "dernek2.png.png.png", "dernek2.jpeg.jpeg"
+    ];
+
+    /* ====== Apply hero & logos ====== */
+    (async function initTopAssets(){
+      // Hero background
+      const heroUrl = await tryGetUrl(HERO_CANDIDATES);
+      if(heroUrl){
+        document.getElementById("hero").style.setProperty("--hero-url", `url('${heroUrl}')`);
+      }
+
+      // Logo
+      trySetImg(document.getElementById("logoImg"), LOGO_CANDIDATES, (src)=>{
+        if(!src){
+          // If no logo found, show simple fallback
+          document.getElementById("logoImg").style.display = "none";
+          document.querySelector(".mark").textContent = "B";
+          document.querySelector(".mark").style.fontWeight = "950";
+          document.querySelector(".mark").style.fontSize = "24px";
+        }
+      });
+
+      // Dernek logos
+      trySetImg(document.getElementById("dernek1"), DERNEK1_CAND);
+      trySetImg(document.getElementById("dernek2"), DERNEK2_CAND);
+    })();
+
+    /* ================================
+      ✅ VILLAS (12)
+      - Page 1: Villa 1-6 (3x2 grid)
+      - Page 2: Villa 7-12 (3x2 grid) and horizontal swipe
+      - Each villa: 2x3 feature boxes + weekday/weekend price boxes
+    ================================= */
+    const VILLA_COUNT = 12;
+
+    const tickSvg = `
+      <svg viewBox="0 0 20 20" fill="none" aria-hidden="true">
+        <path d="M7.8 13.6 4.6 10.4l-1.2 1.2 4.4 4.4L16.8 7l-1.2-1.2-7.8 7.8Z" fill="rgba(2,6,23,.85)"/>
+      </svg>
+    `;
+
+    // ✅ Available photo groups (your note: 1-7, 11-18, 21-28)
+    // We'll reuse these groups across 12 villas (cycling).
+    function groupForVilla(v){ return (v - 1) % 3; } // 0,1,2
+    function groupImages(g){
+      if(g === 0) return [1,2,3,4,5,6,7];               // 1-7
+      if(g === 1) return [11,12,13,14,15,16,17,18];     // 11-18
+      return [21,22,23,24,25,26,27,28];                 // 21-28
+    }
+
+    // For each image number n, try candidates because GitHub can rename.
+    function imageCandidates(n){
+      return [
+        `${n}.jpeg`, `${n}.jpg`, `${n}.png`,
+        `${n}.jpeg.jpeg`, `${n}.jpg.jpg`, `${n}.png.png`
+      ];
+    }
+
+    // Pricing demo (you can change later)
+    function priceFor(v){
+      // simple deterministic example
+      const base = 4500 + (v * 250);
+      const weekend = base + 800;
+      return {
+        weekday: base.toLocaleString("tr-TR") + " ₺",
+        weekend: weekend.toLocaleString("tr-TR") + " ₺"
+      };
+    }
+
+    const villaSel = document.getElementById("villaSel");
+    for(let i=1;i<=VILLA_COUNT;i++){
+      const opt = document.createElement("option");
+      opt.value = `Villa ${i}`;
+      opt.textContent = `Villa ${i}`;
+      villaSel.appendChild(opt);
+    }
+
+    function makeVillaCard(v){
+      const g = groupForVilla(v);
+      const imgNums = groupImages(g);
+      const coverNum = imgNums[0];
+      const prices = priceFor(v);
+
+      const card = document.createElement("div");
+      card.className = "villa";
+      card.setAttribute("data-villa", String(v));
+
+      const imgDiv = document.createElement("div");
+      imgDiv.className = "villa-img";
+
+      const body = document.createElement("div");
+      body.className = "villa-body";
+      body.innerHTML = `
+        <div class="villa-head">
+          <b>Villa ${v}</b>
+          <span class="chip">Galeriyi Aç</span>
+        </div>
+
+        <div class="features">
+          <div class="f"><span class="tick">${tickSvg}</span> Isıtmalı Havuz</div>
+          <div class="f"><span class="tick">${tickSvg}</span> Bahçe</div>
+          <div class="f"><span class="tick">${tickSvg}</span> Jakuzi</div>
+          <div class="f"><span class="tick">${tickSvg}</span> Şömine</div>
+          <div class="f"><span class="tick">${tickSvg}</span> Barbekü</div>
+          <div class="f"><span class="tick">${tickSvg}</span> Oyun Alanı</div>
+        </div>
+
+        <div class="prices">
+          <div class="price">
+            <div>
+              <small>Hafta İçi</small>
+              <b>${prices.weekday}</b>
+            </div>
+          </div>
+          <div class="price">
+            <div>
+              <small>Hafta Sonu</small>
+              <b>${prices.weekend}</b>
+            </div>
+          </div>
+        </div>
+      `;
+
+      // Set cover with candidate tries
+      const dummyImg = document.createElement("img");
+      dummyImg.alt = `Villa ${v} kapak`;
+      trySetImg(dummyImg, imageCandidates(coverNum), (src)=>{
+        if(src){
+          imgDiv.style.setProperty("--img", `url('${src}')`);
+          imgDiv.style.backgroundImage =
+            `linear-gradient(180deg, rgba(0,0,0,.00), rgba(0,0,0,.10)), url('${src}')`;
+        }else{
+          // fallback gradient already present
+        }
+      });
+
+      card.appendChild(imgDiv);
+      card.appendChild(body);
+      return card;
+    }
+
+    const villasScroll = document.getElementById("villasScroll");
+
+    function makePage(start, end){
+      const page = document.createElement("div");
+      page.className = "villas-page";
+      const grid = document.createElement("div");
+      grid.className = "villas-grid";
+
+      for(let v=start; v<=end; v++){
+        grid.appendChild(makeVillaCard(v));
+      }
+      page.appendChild(grid);
+      return page;
+    }
+
+    // ✅ 6 on first page, 6 on second page
+    villasScroll.appendChild(makePage(1,6));
+    villasScroll.appendChild(makePage(7,12));
+
+    /* ================================
+      ✅ MODAL GALLERY (click any villa)
+      Uses grouped images (1-7 / 11-18 / 21-28) and tries filename variants.
+    ================================= */
+    const modal = document.getElementById("modal");
+    const gallery = document.getElementById("gallery");
+    const modalTitle = document.getElementById("modalTitle");
+    const closeBtn = document.getElementById("closeBtn");
+    let currentVilla = 1;
+
+    function openGallery(v){
+      currentVilla = v;
+      renderGallery(v);
+      modal.classList.add("open");
+      modal.setAttribute("aria-hidden","false");
+      document.body.style.overflow = "hidden";
+    }
+    function closeModal(){
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden","true");
+      document.body.style.overflow = "";
+    }
+
+    function renderGallery(v){
+      modalTitle.textContent = `Villa ${v} Galerisi`;
+      gallery.innerHTML = "";
+
+      const g = groupForVilla(v);
+      const imgNums = groupImages(g);
+
+      imgNums.forEach((n) => {
+        const wrap = document.createElement("div");
+        wrap.className = "ph";
+
+        const img = document.createElement("img");
+        img.alt = `Villa ${v} - ${n}`;
+        img.loading = "lazy";
+
+        // try candidates
+        trySetImg(img, imageCandidates(n), (src)=>{
+          if(!src){
+            img.style.display = "none";
+            wrap.style.display = "grid";
+            wrap.style.placeItems = "center";
+            wrap.style.color = "rgba(2,6,23,.65)";
+            wrap.style.fontSize = "12px";
+            wrap.textContent = `Bulunamadı: ${n}.*`;
+          }
+        });
+
+        wrap.appendChild(img);
+        gallery.appendChild(wrap);
+      });
+    }
+
+    // Click handlers for villas
+    villasScroll.addEventListener("click", (e)=>{
+      const card = e.target.closest(".villa");
+      if(!card) return;
+      const v = Number(card.getAttribute("data-villa"));
+      openGallery(v);
+      // set form villa automatically
+      document.getElementById("villaSel").value = `Villa ${v}`;
+      document.getElementById("call").scrollIntoView({behavior:"smooth", block:"start"});
+    });
+
+    document.getElementById("prevBtn").addEventListener("click", () => {
+      const v = currentVilla === 1 ? VILLA_COUNT : currentVilla - 1;
+      currentVilla = v; renderGallery(v);
+    });
+    document.getElementById("nextBtn").addEventListener("click", () => {
+      const v = currentVilla === VILLA_COUNT ? 1 : currentVilla + 1;
+      currentVilla = v; renderGallery(v);
+    });
+
+    closeBtn.addEventListener("click", closeModal);
+    modal.addEventListener("click", (e) => { if(e.target === modal) closeModal(); });
+    window.addEventListener("keydown", (e) => {
+      if(!modal.classList.contains("open")) return;
+      if(e.key === "Escape") closeModal();
+      if(e.key === "ArrowLeft") document.getElementById("prevBtn").click();
+      if(e.key === "ArrowRight") document.getElementById("nextBtn").click();
+    });
+
+    /* ================================
+      ✅ FORM -> WhatsApp (Sizi Arayalım)
+    ================================= */
+    document.getElementById("resForm").addEventListener("submit", (e) => {
+      e.preventDefault();
+
+      const inVal = document.getElementById("checkin").value;
+      const outVal = document.getElementById("checkout").value;
+      const villa = document.getElementById("villaSel").value;
+      const phone = document.getElementById("phone").value.trim();
+
+      if(!inVal || !outVal){ alert("Lütfen giriş ve çıkış tarihlerini seçin."); return; }
+      if(new Date(outVal) <= new Date(inVal)){ alert("Çıkış tarihi, giriş tarihinden sonra olmalı."); return; }
+      if(!phone){ alert("Lütfen telefon numaranızı yazın."); return; }
+
+      const msg =
+`Merhaba, Bungavillas için aranma talebi oluşturmak istiyorum.
+- Telefon: ${phone}
+- Villa: ${villa}
+- Giriş: ${inVal}
+- Çıkış: ${outVal}`;
+
+      window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(msg)}`, "_blank");
+    });
+
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
